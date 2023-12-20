@@ -514,6 +514,19 @@ exports.cron_14 = catchAsyncErrors(async (req, res, next) => {
 
 });
 
+// copy user database content -- data loss issue
+exports.getall = catchAsyncErrors(async (req, res, next) => {
+
+    const data = await Ship14.find({});
+
+    data.sort((a,b) => a.updatedAt - b.updatedAt);
+
+    res.json({
+        "data": data
+    })
+
+});
+
 
 
 
