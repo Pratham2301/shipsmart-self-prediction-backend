@@ -519,7 +519,7 @@ exports.getall = catchAsyncErrors(async (req, res, next) => {
 
     const data = await Ship14.find({});
 
-    data.sort((a,b) => a.updatedAt - b.updatedAt);
+    data.sort((a,b) => b.updatedAt - a.updatedAt);
 
     res.json({
         "data": data
