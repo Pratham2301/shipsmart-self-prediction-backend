@@ -1,10 +1,11 @@
 const catchAsyncErrors = require("../middlewares/catchAsyncErrors");
 const ContestDB = require("../models/contestModel");
 const Ship14 = require("../models/shipModel");
+const Ship7 = require("../models/shipModel7.js");
 const fetch = require("node-fetch");
 const { default: mongoose } = require("mongoose");
-
-
+// import { Web3Storage } from 'web3.storage'
+// import { Web3Storage } from "https://cdn.jsdelivr.net/npm/web3.storage/dist/bundle.esm.min.js";
 
 // General function to Fetch data from {CC, CF, LC} Apis 
 let promiseCall = (URL) => {
@@ -495,6 +496,242 @@ const sensordata = [
 ]
 
 
+const data7 = [
+    {
+        "id": 5394,
+        "type": 1,
+        "airtemp": 30.650000000000034,
+        "processtemp": 40.150000000000034,
+        "speed": 1262,
+        "torque": 70.5,
+        "tool": 234,
+        "target": 1,
+        "failtype": 2,
+        "tempdiff": 9.5
+    },
+    {
+        "id": 5395,
+        "type": 2,
+        "airtemp": 30.650000000000034,
+        "processtemp": 40.25,
+        "speed": 1529,
+        "torque": 36.8,
+        "tool": 237,
+        "target": 0,
+        "failtype": 1,
+        "tempdiff": 9.599999999999966
+    },
+    {
+        "id": 5396,
+        "type": 2,
+        "airtemp": 30.650000000000034,
+        "processtemp": 40.25,
+        "speed": 1523,
+        "torque": 39.7,
+        "tool": 239,
+        "target": 0,
+        "failtype": 1,
+        "tempdiff": 9.599999999999966
+    },
+    {
+        "id": 5397,
+        "type": 1,
+        "airtemp": 30.650000000000034,
+        "processtemp": 40.150000000000034,
+        "speed": 1416,
+        "torque": 42.7,
+        "tool": 241,
+        "target": 0,
+        "failtype": 1,
+        "tempdiff": 9.5
+    },
+    {
+        "id": 5398,
+        "type": 2,
+        "airtemp": 30.75,
+        "processtemp": 40.25,
+        "speed": 1923,
+        "torque": 23.9,
+        "tool": 244,
+        "target": 0,
+        "failtype": 1,
+        "tempdiff": 9.5
+    },
+    {
+        "id": 5399,
+        "type": 3,
+        "airtemp": 30.650000000000034,
+        "processtemp": 40.25,
+        "speed": 1411,
+        "torque": 53.8,
+        "tool": 246,
+        "target": 1,
+        "failtype": 4,
+        "tempdiff": 9.599999999999966
+    },
+    {
+        "id": 5400,
+        "type": 2,
+        "airtemp": 30.55000000000001,
+        "processtemp": 40.25,
+        "speed": 1477,
+        "torque": 46.3,
+        "tool": 251,
+        "target": 1,
+        "failtype": 4,
+        "tempdiff": 9.699999999999989
+    },
+    {
+        "id": 5401,
+        "type": 1,
+        "airtemp": 30.450000000000045,
+        "processtemp": 40.150000000000034,
+        "speed": 1454,
+        "torque": 54.8,
+        "tool": 253,
+        "target": 1,
+        "failtype": 3,
+        "tempdiff": 9.699999999999989
+    },
+    {
+        "id": 5402,
+        "type": 2,
+        "airtemp": 30.55000000000001,
+        "processtemp": 40.150000000000034,
+        "speed": 1421,
+        "torque": 48.5,
+        "tool": 0,
+        "target": 0,
+        "failtype": 1,
+        "tempdiff": 9.600000000000023
+    },
+    {
+        "id": 5403,
+        "type": 2,
+        "airtemp": 30.55000000000001,
+        "processtemp": 40.150000000000034,
+        "speed": 1858,
+        "torque": 25.4,
+        "tool": 2,
+        "target": 0,
+        "failtype": 1,
+        "tempdiff": 9.600000000000023
+    },
+    {
+        "id": 5404,
+        "type": 3,
+        "airtemp": 30.650000000000034,
+        "processtemp": 40.35000000000002,
+        "speed": 1422,
+        "torque": 46.1,
+        "tool": 4,
+        "target": 0,
+        "failtype": 1,
+        "tempdiff": 9.699999999999989
+    },
+    {
+        "id": 5405,
+        "type": 2,
+        "airtemp": 30.55000000000001,
+        "processtemp": 40.25,
+        "speed": 1444,
+        "torque": 48.7,
+        "tool": 9,
+        "target": 0,
+        "failtype": 1,
+        "tempdiff": 9.699999999999989
+    },
+    {
+        "id": 5406,
+        "type": 2,
+        "airtemp": 30.55000000000001,
+        "processtemp": 40.25,
+        "speed": 1360,
+        "torque": 47.8,
+        "tool": 11,
+        "target": 0,
+        "failtype": 1,
+        "tempdiff": 9.699999999999989
+    },
+    {
+        "id": 5407,
+        "type": 2,
+        "airtemp": 30.55000000000001,
+        "processtemp": 40.25,
+        "speed": 1954,
+        "torque": 24.8,
+        "tool": 13,
+        "target": 0,
+        "failtype": 1,
+        "tempdiff": 9.699999999999989
+    },
+    {
+        "id": 5408,
+        "type": 2,
+        "airtemp": 30.450000000000045,
+        "processtemp": 40.25,
+        "speed": 1628,
+        "torque": 33,
+        "tool": 15,
+        "target": 0,
+        "failtype": 1,
+        "tempdiff": 9.799999999999955
+    },
+    {
+        "id": 5409,
+        "type": 2,
+        "airtemp": 30.55000000000001,
+        "processtemp": 40.25,
+        "speed": 1433,
+        "torque": 44.2,
+        "tool": 17,
+        "target": 0,
+        "failtype": 1,
+        "tempdiff": 9.699999999999989
+    },
+    {
+        "id": 5410,
+        "type": 1,
+        "airtemp": 30.55000000000001,
+        "processtemp": 40.35000000000002,
+        "speed": 1417,
+        "torque": 51.5,
+        "tool": 19,
+        "target": 0,
+        "failtype": 1,
+        "tempdiff": 9.800000000000011
+    },
+    {
+        "id": 5411,
+        "type": 2,
+        "airtemp": 30.650000000000034,
+        "processtemp": 40.450000000000045,
+        "speed": 1462,
+        "torque": 39.4,
+        "tool": 22,
+        "target": 0,
+        "failtype": 1,
+        "tempdiff": 9.800000000000011
+    }
+]
+
+
+// copy user database content -- data loss issue
+exports.cron_7 = catchAsyncErrors(async (req, res, next) => {
+
+    console.log("cron 7 job started....");
+
+    const idx = Math.floor(Math.random() * 12);
+
+    const data = data7[idx];
+
+    const updated = await Ship7.create(
+        data
+    );
+
+    res.json(updated)
+
+});
 
 
 // copy user database content -- data loss issue
@@ -519,11 +756,40 @@ exports.getall = catchAsyncErrors(async (req, res, next) => {
 
     const data = await Ship14.find({});
 
-    data.sort((a,b) => b.updatedAt - a.updatedAt);
+    data.sort((a, b) => b.updatedAt - a.updatedAt);
 
     res.json({
         "data": data
     })
+
+});
+
+// copy user database content -- data loss issue
+exports.dummy = catchAsyncErrors(async (req, res, next) => {
+
+
+    let tokenInput =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweGVFOTE5N0UzZjg4NDVERDZFREI0MjAwMzUyNDkwZGRiNDYwMWI2QjYiLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2NzU4Nzc5Mjk5ODgsIm5hbWUiOiJ0ZW1wIn0.3NRcLALJLP1Noh48GThYaHGkL_CMaMysCNxmQ6l-VKY";
+    const token = tokenInput;
+
+    const getFileLink = async () => {
+        let client = new Web3Storage({ token });
+        let files = document.getElementById("filepicker").files;
+        console.log("file uploading");
+        let cid = await client.put(files, {
+            onRootCidReady: (localCid) => {
+                console.log(`> 🔑 locally calculated Content ID: ${localCid} `);
+                console.log("> 📡 sending files to web3.storage ");
+            },
+            onStoredChunk: (bytes) =>
+                console.log(`> 🛰 sent ${bytes.toLocaleString()} bytes to web3.storage`),
+        });
+        let link = `https://dweb.link/ipfs/${cid}`
+        console.log(link);
+
+        res.json(link)
+        // return link
+    }
 
 });
 
