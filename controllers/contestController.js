@@ -755,11 +755,14 @@ exports.cron_14 = catchAsyncErrors(async (req, res, next) => {
 exports.getall = catchAsyncErrors(async (req, res, next) => {
 
     const data = await Ship14.find({});
+    const data7 = await Ship7.find({});
 
-    data.sort((a, b) => b.updatedAt - a.updatedAt);
+    data.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
+    data7.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
 
     res.json({
-        "data": data
+        "data": data,
+        "data7": data7,
     })
 
 });
